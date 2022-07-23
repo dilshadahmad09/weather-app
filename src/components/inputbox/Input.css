@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.search-box{
+    width: 100%;
+    height: 4vh;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+}
+.fontawsome{
+    font-size: 18px;
+    color:#777;
+}
+.search-box > input {
+    flex: 1;
+    height: 2vh;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding-left:10px ;
+}
