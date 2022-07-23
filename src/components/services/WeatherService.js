@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 const API_KEY="cf4e7dc2f2b632e8e8caea937d4fd903";
 const BASE_URL="https://api.openweathermap.org/data/2.5/";
 
@@ -24,14 +26,38 @@ const formatCurrentWeather = (data)=>{
     return {lat, lon, temp,temp_min,temp_max, pressure, humidity,name, dt, sunrise, sunset, country, timezone, details, icon, speed};
 }
 
-const getFormattedWeatherData = async (searchParams)=>{
-    const formattedCurrentWeather = await getWeatherData('weather', searchParams).then(data=>formatCurrentWeather(data));
-
-    const formattedForcastWeather = await getWeatherData('onecall', {
-        lat, lon, exclude:"current, minutely, alerts", units:searchParams.units
+const formatForecastWeather = (data)=>{
+    let {timezone, daily, hourly} = data;
+    daily = daily.slice(1,6).map(d=>{
+        return {
+            title: formatToLocalTime(d.dt, timezone, "ccc"),
+            temp: d.temp.day,
+            icon: d.weather[0].icon
+        }
     })
 
-    return formattedCurrentWeather;
+    hourly = hourly.slice(1,6).map(d=>{
+        return {
+            title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
+            temp: d.temp.day,
+            icon: d.weather[0].icon
+        }
+    })
+    return {timezone, daily, hourly};
 }
 
-export default getFormattedWeatherData;
+
+const getFormattedWeatherData = async (searchParams)=>{
+    const formattedCurrentWeather = await getWeatherData('weather', searchParams).then(formatCurrentWeather);
+
+    const {lat, lon} = formattedCurrentWeather;
+    const formattedForcastWeather = await getWeatherData('onecall', {
+        lat, lon, exclude:"current, minutely, alerts", units:searchParams.units
+    }).then(formatForecastWeather)
+
+    return {...formattedCurrentWeather, ...formattedForcastWeather};
+}
+
+const formatToLocalTime = (secs, zone, format="cccc, 'dd LLL yyyy' | Local Time: 'hh:mm a'") => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+const iconUrlFromCode =(code)=> `http://openweathermap.org/img/wn/${code}@2x.png`
+export {formatToLocalTime,iconUrlFromCode, getFormattedWeatherData};
