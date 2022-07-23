@@ -1,15 +1,16 @@
 import React from 'react'
+import getFormattedWeatherData from '../../services/WeatherService';
 import DailyDetails from '../dailyDetails/DailyDetails';
 import HourlyDetails from '../hourlyDetails/HourlyDetails';
 import SunsetSunrise from '../sunsetSunrise/SunsetSunrise';
-import {getWeatherData} from "../../services/WeatherService";
+
 import "./DetailsMain.css"
 
 
 
 const DetailsMain = () => {
     const fetchWeather = async ()=>{
-        const data = await getWeatherData("weather", {q:"pune"});
+        const data = await getFormattedWeatherData({q:"pune"});
         console.log("dilshad", data);
     }
     fetchWeather();
