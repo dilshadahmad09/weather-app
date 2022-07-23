@@ -8,7 +8,7 @@ const DetailsMain = () => {
   return (
     <div>
         <DailyDetails/>
-        <div className='details-hour-sun-body'>
+        <div className='details-hour-sunset-sunrise-body'>
            <HourlyDetails/>
            <SunsetSunrise/>
         </div>

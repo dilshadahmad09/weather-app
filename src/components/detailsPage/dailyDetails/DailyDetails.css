@@ -1,0 +1,15 @@
+.daily-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.daily-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.daily-items > img{
+    width: 2vw;
+}
