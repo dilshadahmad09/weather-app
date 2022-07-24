@@ -25,7 +25,6 @@ function Home() {
   return (
     <div className='body'>
         <Input setQuery={setQuery}/>
-       {/* <DetailsMain/> */}
        {weather && 
          <div>
               <DailyDetails  weather={weather} iconUrlFromCode={iconUrlFromCode}/>
