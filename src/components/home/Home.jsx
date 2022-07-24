@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import Body from '../detailsPage/body/Body'
 import DailyDetails from '../detailsPage/dailyDetails/DailyDetails'
 import HourlyDetails from '../detailsPage/hourlyDetails/HourlyDetails'
 import SunsetSunrise from '../detailsPage/sunsetSunrise/SunsetSunrise'
@@ -17,12 +16,12 @@ function Home() {
        });   
        
     }
-
+    console.log("weather", weather)
     
     useEffect( ()=>{
         fetchWeather(); 
     },[query])
-    
+
   return (
     <div className='body'>
         <Input setQuery={setQuery}/>

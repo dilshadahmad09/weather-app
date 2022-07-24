@@ -3,15 +3,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSearch, faLocationDot} from "@fortawesome/free-solid-svg-icons"
 import "./Input.css"
 const Input = ({setQuery})=>{
-    const [city, setCity] = useState("")
-    // useEffect(()=>{
-    //     setCity(text)
-    // },[text])
-
-
-
+    const [city, setCity] = useState([])
+   const [text, setText] = useState("")
     const searchCityHandle = ()=>{
-        if(city !==null) setQuery({q:city})
+        if(text !==null) setQuery({q:text})
     }
     const findCityByLocation = ()=>{
         if(navigator.geolocation){
@@ -26,7 +21,7 @@ const Input = ({setQuery})=>{
     return <div>
         <div className="search-box">
             <FontAwesomeIcon onClick={findCityByLocation} className="fontawsome" icon={faLocationDot} />
-             <input type="text" value={city}  onChange={(e)=>setCity(e.target.value)}/>
+             <input type="text" value={text}  onChange={(e)=>setText(e.target.value)}/>
            <FontAwesomeIcon onClick={searchCityHandle} className="fontawsome" icon={faSearch} />
         </div>
     </div>
