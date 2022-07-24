@@ -18,6 +18,7 @@
 .fontawsome{
     font-size: 18px;
     color:#777;
+    cursor: pointer;
 }
 .search-box > input {
     flex: 1;

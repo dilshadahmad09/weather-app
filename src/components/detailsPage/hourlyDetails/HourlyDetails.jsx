@@ -1,6 +1,7 @@
 import React from "react";
 
-const HourlyDetails = ()=>{
+const HourlyDetails = ({weather})=>{
+    
     return <div>Hourly Details</div>
 }
 

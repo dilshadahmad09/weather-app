@@ -1,12 +1,12 @@
 import { DateTime } from "luxon";
 
-const API_KEY="cf4e7dc2f2b632e8e8caea937d4fd903";
+const API_KEY="248611b4874cf10cdfdace96277712c7";
 const BASE_URL="https://api.openweathermap.org/data/2.5/";
 
  const getWeatherData = async (infoType, searchParams)=>{
     const url = new URL(BASE_URL + infoType);
     url.search = new URLSearchParams({...searchParams, appid:API_KEY});
-    console.log(url)
+    
     return fetch(url).then(res=>res.json());
 }
 
@@ -32,14 +32,15 @@ const formatForecastWeather = (data)=>{
         return {
             title: formatToLocalTime(d.dt, timezone, "ccc"),
             temp: d.temp.day,
-            icon: d.weather[0].icon
+            icon: d.weather[0].icon,
+            main:d.weather[0].main
         }
     })
 
     hourly = hourly.slice(1,6).map(d=>{
         return {
             title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-            temp: d.temp.day,
+            temp: d.temp,
             icon: d.weather[0].icon
         }
     })
