@@ -29,6 +29,11 @@ function Home() {
          <div>
               <DailyDetails  weather={weather} iconUrlFromCode={iconUrlFromCode}/>
             <div className='details-hour-sunset-sunrise-body'>
+                <div className='current-temp-name'>
+                    <span>{weather.temp}°</span>
+                    <span>{weather.name}</span>
+                    <img src={iconUrlFromCode(weather.icon)} alt="" />
+                </div>
               <HourlyDetails weather={weather}/>
               <SunsetSunrise weather={weather}/>
            </div>

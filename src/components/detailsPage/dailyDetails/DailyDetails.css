@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin: 20px;
 }
 .daily-items{
     display: flex;
@@ -11,5 +12,5 @@
     justify-content: center;
 }
 .daily-items > img{
-    width: 2vw;
+    width: 4vw;
 }

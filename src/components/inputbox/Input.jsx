@@ -18,6 +18,9 @@ const Input = ({setQuery})=>{
             
         }
     }
+    useEffect(()=>{
+        findCityByLocation();
+    },[])
     return <div>
         <div className="search-box">
             <FontAwesomeIcon onClick={findCityByLocation} className="fontawsome" icon={faLocationDot} />

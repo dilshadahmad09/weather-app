@@ -5,11 +5,27 @@
 }
 
 .body{
-    width: 22%;
+    width: 35%;
     border: 1px solid black;
     margin: auto;
+    margin-top: 20px;
     border-radius: 6px;
     padding: 10px;
-    height: 600px;
     background-color: white;
+}
+
+.details-hour-sunset-sunrise-body{
+    margin-top: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+.current-temp-name{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    padding-left:3% ;
+    font-size: 2vmax;
+}
+.current-temp-name > img{
+    width: 6vmax;
 }

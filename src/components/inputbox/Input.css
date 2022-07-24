@@ -14,9 +14,10 @@
     align-items: center;
     padding: 0 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+   
 }
 .fontawsome{
-    font-size: 18px;
+    font-size: 2vmax;
     color:#777;
     cursor: pointer;
 }
@@ -27,4 +28,5 @@
     outline: none;
     font-size: 18px;
     padding-left:10px ;
+
 }
